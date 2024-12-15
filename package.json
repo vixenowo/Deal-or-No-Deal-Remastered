@@ -1,0 +1,14 @@
+{
+  "name": "dond-remastered",
+  "version": "1.0.0",
+  "description": "Deal or No Deal UK AC Remastered",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "blitzen",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.1.0"
+  }
+}
