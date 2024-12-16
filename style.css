@@ -1,0 +1,185 @@
+:root {
+    --main: rgb(209, 51, 51);
+}
+
+@font-face {
+    font-family: 'Eurostile Next LT Com';
+    src: url('fonts/EurostileNextLTCom-SmBd.woff2') format('woff2'),
+        url('fonts/EurostileNextLTCom-SmBd.woff') format('woff'),
+        url('fonts/EurostileNextLTCom-SmBd.ttf') format('truetype'),
+        url('fonts/EurostileNextLTCom-SmBd.svg#EurostileNextLTCom-SmBd') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Impact';
+    src: url('fonts/Impact.woff2') format('woff2'),
+        url('fonts/Impact.woff') format('woff'),
+        url('fonts/Impact.ttf') format('truetype'),
+        url('fonts/Impact.svg#Impact') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EurostileT';
+    src: url('fonts/EurostileT-Bold.woff2') format('woff2'),
+        url('fonts/EurostileT-Bold.woff') format('woff'),
+        url('fonts/EurostileT-Bold.ttf') format('truetype'),
+        url('fonts/EurostileT-Bold.svg#EurostileT-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EuroStyle';
+    src: url('fonts/EuroStyleNormal.woff2') format('woff2'),
+        url('fonts/EuroStyleNormal.woff') format('woff'),
+        url('fonts/EuroStyleNormal.ttf') format('truetype'),
+        url('fonts/EuroStyleNormal.svg#EuroStyleNormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EurostileExt-Normal';
+    src: url('fonts/EurostileExt-Normal.woff2') format('woff2'),
+        url('fonts/EurostileExt-Normal.woff') format('woff'),
+        url('fonts/EurostileExt-Normal.ttf') format('truetype'),
+        url('fonts/EurostileExt-Normal.svg#EurostileExt-Normal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'EurostileExt';
+    src: url('fonts/EurostileExt-Bold.woff2') format('woff2'),
+        url('fonts/EurostileExt-Bold.woff') format('woff'),
+        url('fonts/EurostileExt-Bold.ttf') format('truetype'),
+        url('fonts/EurostileExt-Bold.svg#EurostileExt-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+}
+
+.game {
+    background-color: blue;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    color: white;
+    position: absolute;
+}
+
+h1 {
+    font-family: 'Impact';
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: 'Eurostile Next LT Com';
+}
+
+.idlecoin {
+    display: flex;
+    height: 100%;
+}
+
+.idleflex {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.creditzone {
+    outline: 4px solid var(--main);
+    outline-offset: -4px;
+    width: 480px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 18px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: normal;
+    padding: 66px 0px 66px 0px;
+}
+
+.creditzone h2 {
+    font-size: 42px;
+    font-family: 'Impact';
+    font-weight: normal;
+    margin: 0;
+}
+
+.creditzone h3 {
+    font-size: 42px;
+    font-family: 'Impact';
+    font-weight: normal;
+    margin: 0;
+}
+
+.creditzone h2:nth-child(1) {
+    margin-bottom: 36px;
+}
+
+.creditzone h3:nth-child(2) {
+    margin-bottom: 12px;
+}
+
+.creditzone h3:nth-child(3) {
+    font-size: 96px;
+    margin-bottom: 6px;
+}
+
+.redzone {
+    color: var(--main);
+}
+
+.doubledeal {
+    position: absolute;
+    margin-top: 114px;
+    font-size: 54px;
+    font-family: 'Impact';
+    font-weight: normal;
+    background-color: white;
+    color: black;
+    padding: 7px 10px 1px 7px;
+}
+
+.credits{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: -5px;
+}
+
+.flashtext{
+    animation: flashy 0.15s forwards infinite;
+}
+
+@keyframes flashy{
+    from{
+        color: white;
+    }
+    to{
+        color: var(--main)
+    }
+}

@@ -1,27 +1,39 @@
-
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('node:path')
+const electronLocalshortcut = require('electron-localshortcut');
+
+let mainWindow; 
+let coinCounter = 0.00;
 
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    titleBarStyle: 'hidden',
+  mainWindow = new BrowserWindow({
+    width: 1280,
+    height: 735,
+    resizable: false,
     trafficLightPosition: { x: 8, y: 8 },
     titleBarOverlay: {
       height: 60
     },
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
     }
   })
 
   mainWindow.loadFile('index.html')
-  // mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 }
 
 app.whenReady().then(() => {
   createWindow()
+
+  electronLocalshortcut.register(mainWindow, 'ENTER', () => {
+    coinCounter += 0.25;
+    console.log(`Coin counter: £${coinCounter.toFixed(2)}`); 
+
+    mainWindow.webContents.send('coin', coinCounter.toFixed(2));
+  });
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
