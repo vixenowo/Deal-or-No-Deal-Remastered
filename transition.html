@@ -1,122 +1,87 @@
-
-<style>
-    body{
-        background-color: black;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Center-Out Grid Transition</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      overflow: hidden;
     }
-    .cubestransition{
-        display: grid;
-        grid-template-columns: repeat(10, 100px);
-        grid-auto-rows: 80px;
-        gap: 5px;
+
+    /* Container for the grid */
+    .grid-container {
+      position: relative;
+      width: 500px;
+      height: 300px;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr); /* 8 Columns */
+      grid-template-rows: repeat(6, 1fr);   /* 4 Rows */
     }
 
-    .cube{
-        background-color: blue;
-        animation: transitionit 2s forwards;
+    /* Grid tiles */
+    .grid-tile {
+      position: relative;
+      background-image: url('test/A.jpg'); /* Replace with deal or no deal box image */
+      background-size: 500px 300px;
+      animation: flip 1s ease forwards;
+      opacity: 0;
+    }
+
+    /* Keyframes for the flip animation */
+    @keyframes flip {
+      0% {
+        transform: rotateY(90deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container"></div>
+
+  <script>
+    const gridContainer = document.querySelector('.grid-container');
+
+    const rows = 6;  // Example: Increase rows
+const cols = 10; // Example: Increase columns
+    const centerRow = Math.floor(rows / 2);
+    const centerCol = Math.floor(cols / 2);
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const tile = document.createElement('div');
+        tile.classList.add('grid-tile');
         
+        // Calculate distance from the center
+        const distance = Math.sqrt(
+          Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
+        );
+
+        // Set animation delay based on distance
+        tile.style.animationDelay = `${distance * 0.1}s`;
+
+        // Set background position for the tile
+        tile.style.backgroundPosition = `
+          ${-col * (500 / cols)}px
+          ${-row * (300 / rows)}px
+        `;
+        gridContainer.appendChild(tile);
+      }
     }
-
-    @keyframes transitionit {
-    from {
-        clip-path: polygon(100% 0%, 0% 0%, 100% 0%, 100% 100%);
-    }
-    to {
-        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%);
-    }
-}
-
-</style>
-
-
-<div class="cubestransition">
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-    <div class="cube"></div>
-</div>
+  </script>
+</body>
+</html>

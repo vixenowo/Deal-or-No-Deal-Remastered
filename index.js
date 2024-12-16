@@ -35,6 +35,10 @@ app.whenReady().then(() => {
     mainWindow.webContents.send('coin', coinCounter.toFixed(2));
   });
 
+  electronLocalshortcut.register(mainWindow, 'X', () => {
+    mainWindow.webContents.send('startgame');
+  });
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
