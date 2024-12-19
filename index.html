@@ -8,7 +8,13 @@
   </head>
   <body>
     <div class="game">
-      <div class="grid-container"></div>
+      <div class="idlemode" id="idlemode">
+        <div class="grid-container idlelogos"></div>
+
+        <div class="demonstration" id="demonstration">DEMONSTRATION VIDEO</div>
+      </div>
+
+      <div class="grid-container startani"></div>
       <div class="idlecoin">
         <div class="idleflex">
           <div>
@@ -61,10 +67,11 @@
 
           </div>
         </div>
-        <h1 class="credits">CREDITS: £0.00</h1>
+        <h1 class="credits" id="credits">CREDITS: £0.00</h1>
       </div>
     </div>
   </body>
   <script src="main.js"></script>
   <script src="renderer.js"></script>
+  <script src="WindowManager.js"></script>
 </html>

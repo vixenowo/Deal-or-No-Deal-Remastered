@@ -6,26 +6,103 @@ audio.preload = 'auto';
 var IDLEaudio = new Audio('audio/mus_attract_2.wav');
 IDLEaudio.play();
 
-let COINTOTAL = 0
+var gameplayidleaudio = new Audio('audio/bed_01.wav');
+
+let COINTOTAL = 0;
+let idlemode_localvar = true;
 
 
-ipcRenderer.on('coin', (event, coinValue) => {
-  // Ensure coinValue is a number (if it's a string, try to convert it)
+ipcRenderer.on('coinsinserted', (event) => {
+  idlemode_localvar = false;
+  document.getElementById('idlemode').style.display = "none";
+  document.getElementById('credits').classList.remove('creditsflashing')
+  gameplayidleaudio.currentTime = 0
+  gameplayidleaudio.pause();
+});
+
+function idlemodeloop() {
+  if (idlemode_localvar) {
+    setTimeout(function () {
+      if (idlemode_localvar) {
+        document.getElementById('credits').style.display = "none";
+        const gridContainer = document.querySelector('.idlelogos');
+        const rows = 12;  
+        const cols = 20;  
+        const centerRow = Math.floor(rows / 2);
+        const centerCol = Math.floor(cols / 2);
+        const tileWidth = (1280 / cols);  
+        const tileHeight = (720 / rows); 
+  
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const tile = document.createElement('div');
+            tile.classList.add('idlelogos-tile');
+            
+            const distance = Math.sqrt(
+              Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
+            );
+  
+            tile.style.animationDelay = `${distance * 0.1}s`;
+  
+            tile.style.backgroundPosition = `
+              ${-col * tileWidth}px
+              ${-row * tileHeight}px
+            `;
+  
+            tile.style.width = `${tileWidth}px`;
+            tile.style.height = `${tileHeight}px`;
+  
+            gridContainer.appendChild(tile);
+          }
+        }
+      }
+
+      setTimeout(function () {
+        if (idlemode_localvar) {
+          document.getElementById('credits').style.display = "block";
+          document.getElementById('credits').innerText = "INSERT CREDIT";
+          document.getElementById('credits').classList.add('creditsflashing')
+        }
+      }, 2000);
+    }, 5000);
+
+    setTimeout(function () {
+      if (idlemode_localvar) {
+        document.getElementById('demonstration').style.display = "block";
+        const tiles = document.querySelectorAll('.idlelogos-tile');
+        tiles.forEach(tile => {
+          IDLEaudio.currentTime = 0;
+          IDLEaudio.pause();
+          gameplayidleaudio.play();
+          tile.classList.remove('idlelogos-tile');
+          tile.classList.add('idlelogos-tile-reverse');
+        });
+      }
+    }, 10000);
+  }
+}
+
+idlemodeloop();
+
+ipcRenderer.on('coin', (event, coinValue, playSound) => {
   coinValue = parseFloat(coinValue);
   COINTOTAL = parseFloat(coinValue);
 
-  if (isNaN(coinValue)) {
-    console.error('Invalid coinValue:', coinValue);
-    return; // Exit if coinValue is not a valid number
-  }
-
   const coinElement = document.querySelector('.credits');
 
-  if (audio.paused) {
-    audio.play();
-  } else {
-    audio.currentTime = 0;
-    audio.play();
+  if (isNaN(coinValue)) {
+    console.error('Invalid coinValue:', coinValue);
+    return; 
+  }
+
+
+  if (playSound == true){
+    if (audio.paused) {
+      audio.play();
+    } else {
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 
   function updateCoinValue() {
@@ -48,12 +125,10 @@ ipcRenderer.on('coin', (event, coinValue) => {
       }
   }
 
-  // Update the credits text
   if (coinElement) {
-    coinElement.textContent = `CREDITS: £${coinValue.toFixed(2)}`;
+    coinElement.textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
   }
 
-  // Call the functions to update values for both £1 and £2
   updateCoinValueDoubles();
   updateCoinValue();
 });
@@ -67,31 +142,36 @@ ipcRenderer.on('startgame', (event) => {
     playaudio.play();
     var playnarratoraudio = new Audio('audio/narrator/are_you_ready.wav');
     playnarratoraudio.play();
-    const gridContainer = document.querySelector('.grid-container');
+    const gridContainer = document.querySelector('.startani');
+
+    ipcRenderer.send('reduce-coin', 1.00);
   
-    const rows = 12;  // Example: Increase rows
-  const cols = 20; // Example: Increase columns
+    const rows = 12;  
+    const cols = 20;  
     const centerRow = Math.floor(rows / 2);
     const centerCol = Math.floor(cols / 2);
+    const tileWidth = (1280 / cols);  
+    const tileHeight = (720 / rows); 
   
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         const tile = document.createElement('div');
         tile.classList.add('grid-tile');
         
-        // Calculate distance from the center
         const distance = Math.sqrt(
           Math.pow(row - centerRow, 2) + Math.pow(col - centerCol, 2)
         );
   
-        // Set animation delay based on distance
         tile.style.animationDelay = `${distance * 0.1}s`;
   
-        // Set background position for the tile
         tile.style.backgroundPosition = `
-          ${-col * (1280 / cols)}px
-          ${-row * (720 / rows)}px
+          ${-col * tileWidth}px
+          ${-row * tileHeight}px
         `;
+
+        tile.style.width = `${tileWidth}px`;
+        tile.style.height = `${tileHeight}px`;
+
         gridContainer.appendChild(tile);
       }
     }
