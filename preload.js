@@ -11,6 +11,42 @@ var gameplayidleaudio = new Audio('audio/bed_01.wav');
 let COINTOTAL = 0;
 let idlemode_localvar = true;
 
+let selectedNumber = 0;
+let RandomBoxNumber = 0;
+
+function getRandomNumberFromList() {
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 20, 40, 50, 75, 100, 200];
+  const randomIndex = Math.floor(Math.random() * numbers.length);
+  selectedNumber = numbers[randomIndex];
+}
+
+function getRandomBoxNumber() {
+  RandomBoxNumber = Math.floor(Math.random() * 16) + 1;  
+}
+
+getRandomNumberFromList();
+getRandomBoxNumber();
+
+function playCrowdAudio(number) {
+  let audioPath;
+
+  if (number >= 8) {
+    const badFileNumber = Math.floor(Math.random() * 4) + 1;  
+    audioPath = `audio/crowd/bad/${String(badFileNumber)}.wav`;
+  } 
+  else if (number <= 10) {
+    const goodFileNumber = Math.floor(Math.random() * 3) + 1; 
+    audioPath = `audio/crowd/good/${String(goodFileNumber)}.wav`;
+  }
+
+  const audio = new Audio(audioPath);
+  audio.play();
+}
+
+function playBoxNarratorAudio(number) {
+  const audio = new Audio(`audio/numbers/${String(number).padStart(2, '0')}.wav`); // Format the number as "01", "02", etc.
+  audio.play();
+}
 
 ipcRenderer.on('coinsinserted', (event) => {
   idlemode_localvar = false;
@@ -24,6 +60,10 @@ function idlemodeloop() {
   if (idlemode_localvar) {
     setTimeout(function () {
       if (idlemode_localvar) {
+        getRandomNumberFromList();
+        getRandomBoxNumber();
+
+        document.getElementById('idlemode').style.display = "block";
         document.getElementById('credits').style.display = "none";
         const gridContainer = document.querySelector('.idlelogos');
         const rows = 12;  
@@ -32,6 +72,8 @@ function idlemodeloop() {
         const centerCol = Math.floor(cols / 2);
         const tileWidth = (1280 / cols);  
         const tileHeight = (720 / rows); 
+
+        gridContainer.innerHTML = '';
   
         for (let row = 0; row < rows; row++) {
           for (let col = 0; col < cols; col++) {
@@ -76,9 +118,43 @@ function idlemodeloop() {
           gameplayidleaudio.play();
           tile.classList.remove('idlelogos-tile');
           tile.classList.add('idlelogos-tile-reverse');
+
+        setTimeout(function () {
+          tile.classList.remove('idlelogos-tile-reverse');
+        }, 3000); 
         });
       }
-    }, 10000);
+    }, 12000);
+
+    setTimeout(function () {
+      if (idlemode_localvar) {
+        document.getElementById('demonumber').innerText = selectedNumber;
+        document.getElementById('demoboxnumber').innerText = RandomBoxNumber;
+
+        playBoxNarratorAudio(RandomBoxNumber)
+
+        setTimeout(function () {
+          playCrowdAudio(selectedNumber);
+        }, 1100); 
+
+        setTimeout(function () {
+          var moneyflip = new Audio('audio/money_flip.wav');
+          moneyflip.play();
+        }, 1500); 
+
+        setTimeout(function () {
+          gameplayidleaudio.currentTime = 0;
+          gameplayidleaudio.pause();
+          document.getElementById('idlemode').style.display = "none";
+          document.getElementById('credits').classList.remove('creditsflashing');
+          document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
+        document.getElementById('demonstration').style.display = "none";
+          idlemodeloop();
+        }, 4000); 
+    
+        console.log('Selected Number:', selectedNumber);  
+      }
+    }, 17000); 
   }
 }
 
