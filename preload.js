@@ -30,11 +30,11 @@ getRandomBoxNumber();
 function playCrowdAudio(number) {
   let audioPath;
 
-  if (number >= 8) {
+  if (number >= 10) {
     const badFileNumber = Math.floor(Math.random() * 4) + 1;
     audioPath = `audio/crowd/bad/${String(badFileNumber)}.wav`;
   }
-  else if (number <= 10) {
+  else if (number < 10) {
     const goodFileNumber = Math.floor(Math.random() * 3) + 1;
     audioPath = `audio/crowd/good/${String(goodFileNumber)}.wav`;
   }
@@ -110,7 +110,7 @@ function idlemodeloop() {
 
     setTimeout(function () {
       if (idlemode_localvar) {
-        document.getElementById('demonstration').style.display = "block";
+        document.getElementById('demonstration').style.display = "flex";
         const tiles = document.querySelectorAll('.idlelogos-tile');
         tiles.forEach(tile => {
           IDLEaudio.currentTime = 0;

@@ -80,6 +80,10 @@ app.whenReady().then(() => {
     }
   });
 
+  electronLocalshortcut.register(mainWindow, 'Q', () => {
+    mainWindow.loadFile('test/game.html');
+  });
+
   // Handle IPC for reducing coins
   ipcMain.on('reduce-coin', (event, amount) => {
     if (coinCounter >= amount) {

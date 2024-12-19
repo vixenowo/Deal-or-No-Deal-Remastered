@@ -2,7 +2,20 @@
     body{
         background-color: black;
         margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+@font-face {
+    font-family: 'Eurostile Next LT Com';
+    src: url('../fonts/EurostileNextLTCom-SmBd.woff2') format('woff2'),
+        url('../fonts/EurostileNextLTCom-SmBd.woff') format('woff'),
+        url('../fonts/EurostileNextLTCom-SmBd.ttf') format('truetype'),
+        url('../fonts/EurostileNextLTCom-SmBd.svg#EurostileNextLTCom-SmBd') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
 
     .game{
     background-color: blue;
@@ -20,22 +33,108 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        background-image: url('../img/bg2.png');
+        background-size: contain;
     }
 
     .board{
         background-color: rgb(94, 161, 186);
-        width: 450px;
-        height: 450px;
-        margin-top: -120px;
-        outline: 3px solid black;
+        width: 440px;
+        height: 425px;
+        margin-top: -165px;
+        margin-left: -16px;
         overflow: hidden;
     }
+
+    .table {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  width: 100%;
+  height: 100%;
+  padding: 11px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.cell {
+  width: 80px;
+  height: 65px;
+  background-image: linear-gradient(rgb(210, 38, 38), rgb(110, 13, 13));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+}
+
+.row.offset {
+  margin-left: 30px; 
+}
+
+.boxtop{
+    background-color: rgb(126, 0, 0);
+    width: 100%;
+    height: 5px;
+    margin-top: -40px;
+}
+
+.boxnumber{
+    background-color: white;
+    color: rgb(110, 13, 13);
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    margin-top: 8px;
+    outline: 1px solid white;
+    outline-offset: 1px;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Eurostile Next LT Com';
+}
+
+.boxnumber p{
+    margin-top: 0px;
+}
 </style>
 
 <div class="game">
     <div class="gameset">
         <div class="board">
 
+            <div class="table">
+                <div class="row offset">
+                  <div class="cell">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber"><p>13</p></div>
+                  </div>
+                  <div class="cell">1,2</div>
+                  <div class="cell">1,3</div>
+                  <div class="cell">1,4</div>
+                </div>
+                <div class="row">
+                  <div class="cell">2,1</div>
+                  <div class="cell">2,2</div>
+                  <div class="cell">2,3</div>
+                  <div class="cell">2,4</div>
+                </div>
+                <div class="row offset">
+                  <div class="cell">3,1</div>
+                  <div class="cell">3,2</div>
+                  <div class="cell">3,3</div>
+                  <div class="cell">3,4</div>
+                </div>
+                <div class="row">
+                  <div class="cell">4,1</div>
+                  <div class="cell">4,2</div>
+                  <div class="cell">4,3</div>
+                  <div class="cell">4,4</div>
+                </div>
+              </div>
+
         </div>
     </div>
 </div>
+<script src="../WindowManager.js"></script>
