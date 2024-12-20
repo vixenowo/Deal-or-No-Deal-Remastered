@@ -128,8 +128,6 @@ function idlemodeloop() {
 
     setTimeout(function () {
       if (idlemode_localvar) {
-        document.getElementById('demonumber').innerText = selectedNumber;
-        document.getElementById('demoboxnumber').innerText = RandomBoxNumber;
 
         playBoxNarratorAudio(RandomBoxNumber)
 

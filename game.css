@@ -1,0 +1,379 @@
+
+.gameset{
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/bg2.png');
+    background-size: contain;
+}
+
+.board{
+    background-color: transparent;
+    width: 440px;
+    height: 425px;
+    margin-top: -165px;
+    margin-left: -16px;
+    overflow: hidden;
+}
+
+.table {
+display: flex;
+flex-direction: column;
+gap: 45px;
+width: 100%;
+height: 100%;
+padding: 11px;
+}
+
+.row {
+display: flex;
+gap: 20px;
+}
+
+.cell {
+width: 82px;
+height: 67px;
+background-image: linear-gradient(rgb(210, 38, 38), rgb(110, 13, 13));
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.row.offset {
+margin-left: 30px; 
+}
+
+.boxtop{
+background-color: rgb(173, 19, 19);
+width: 100%;
+height: 2px;
+margin-top: -45px;
+border-top: 1px solid rgb(72, 15, 15);
+border-bottom: 1px solid rgb(154, 64, 64);
+}
+
+.boxtop::before{
+content: '';
+display: block;
+width: 5px;
+height: 13px;
+margin-left: 5px;
+margin-top: -4px;
+background-color: rgb(133, 26, 26);
+border-top: 1px solid rgb(136, 30, 30);
+border-bottom: 1px solid rgb(125, 41, 41);
+}
+
+.boxnumber{
+background-color: white;
+color: rgb(110, 13, 13);
+position: absolute;
+width: 50px;
+height: 30px;
+margin-top: 8px;
+outline: 1px solid white;
+outline-offset: 1px;
+text-align: center;
+font-size: 35px;
+font-family: 'Eurostile Next LT Com';
+}
+
+.boxnumber p{
+margin-top: 0px;
+}
+
+.lava-container {
+width: 440px;
+height: 425px;
+background-color: rgb(69, 113, 151);
+overflow: hidden;
+position: absolute;
+z-index: -1;
+}
+
+.blob {
+position: absolute;
+width: 200px;
+height:200px;
+background: rgba(93, 16, 62, 0.541); 
+border-radius: 50%;
+filter: blur(50px);
+animation: moveBlobs 10s infinite ease-in-out;
+}
+
+.blob:nth-child(1) {
+top: 10%;
+left: 20%;
+animation-duration: 8s;
+animation-delay: -2s;
+}
+.blob:nth-child(2) {
+top: 50%;
+left: 40%;
+animation-duration: 12s;
+animation-delay: -4s;
+}
+.blob:nth-child(3) {
+top: 30%;
+left: 70%;
+animation-duration: 9s;
+animation-delay: -6s;
+}
+.blob:nth-child(4) {
+top: 70%;
+left: 10%;
+animation-duration: 11s;
+animation-delay: -3s;
+}
+.blob:nth-child(5) {
+top: 60%;
+left: 80%;
+animation-duration: 10s;
+animation-delay: -5s;
+}
+.blob:nth-child(6) {
+top: 20%;
+left: 50%;
+animation-duration: 13s;
+animation-delay: -1s;
+}
+.blob:nth-child(7) {
+top: 80%;
+left: 30%;
+animation-duration: 9s;
+animation-delay: -3s;
+}
+.blob:nth-child(8) {
+top: 40%;
+left: 90%;
+animation-duration: 14s;
+animation-delay: -6s;
+}
+.blob:nth-child(9) {
+top: -10%;
+left: -20%;
+animation-duration: 14s;
+animation-delay: 2s;
+}
+
+@keyframes moveBlobs {
+0% {
+transform: translate(0, 0);
+}
+25% {
+transform: translate(50px, -50px);
+}
+50% {
+transform: translate(-100px, 100px);
+}
+75% {
+transform: translate(-50px, -100px);
+}
+100% {
+transform: translate(0, 0);
+}
+}
+
+.ticketarea{
+width: 100%;
+height: 100%;
+position: absolute;
+display: flex;
+}
+
+.bluetickets{
+flex: 1;
+display: flex;
+justify-content: left;
+align-items: center;
+animation: lefttomiddle 1.5s forwards ease-out;
+}
+
+.redtickets{
+flex: 1;
+display: flex;
+justify-content: right;
+align-items: center;
+animation: righttomiddle 1.5s forwards ease-out;
+}
+
+.ticketholder{
+width: 250px;
+height: 100%;
+color: white;
+}
+
+.ticketholder h3{
+text-align: center;
+font-size: 25px;
+margin: 0;
+font-family: 'Impact';
+letter-spacing: 8px;
+margin-top: 15px;
+margin-right: -60px;
+margin-bottom: 7px;
+}
+
+.redtickets .ticketholder h3{
+margin-right: 55px;
+}
+
+.ticketdisplay{
+background-color: beige;
+width: 180px;
+height: 47px;
+margin-left: 40px;
+margin-top: 5px;
+border-radius: 5px 10px 10px 5px;
+padding: 4px;
+padding-left: 20px;
+margin-bottom: 10px;
+animation: lefttomiddle 1.5s forwards ease-out;
+transform: translateX(-350px);
+}
+
+.redtickets .ticketdisplay{
+transform: translateX(350px);
+margin-left: 0px;
+border-radius: 10px 5px 5px 10px;
+animation: righttomiddle 1.5s forwards ease-out;
+}
+
+.ticketnumbscrewpost{
+background-color: rgb(43, 43, 169);
+width: 30px;
+height: 20px;
+position: absolute;
+margin-top: 12.5px;
+margin-left: -13px;
+border-radius: 10px 0px 0px 10px;
+display: flex;
+justify-content: left;
+align-items: center;
+}
+
+.redtickets .ticketnumbscrewpost{
+margin-left: 163px;
+transform: scaleX(-1);
+background-color: rgb(169, 49, 43);
+}
+
+.screwticket{
+width: 13px;
+height: 13px;
+margin-left: 3px;
+border-radius: 100%;
+background-color: rgb(153, 142, 79);
+}
+
+.ticketnumber{
+background-color: rgb(43, 43, 169);
+width: 100%;
+height: 100%;
+border-radius: 10px;
+text-align: center;
+font-size: 35px;
+font-family: 'Eurostile Next LT Com';
+}
+
+.redtickets .ticketnumber{
+margin-left: -15px;
+background-color: rgb(169, 49, 43);
+}
+
+.ticketnumber p{
+margin: 0;
+padding-top: 8px;
+text-shadow: 0px 0px 5px black;
+}
+
+.ticketpole{
+width: 100px;
+height: 8px;
+position: absolute;
+background-image: linear-gradient(rgb(95, 91, 45), rgb(196, 196, 84), rgb(95, 91, 45));
+margin-left: -106px;
+}
+
+.ticketpoleholder{
+width: 9px;
+height: 20px;
+background-image: linear-gradient(rgb(194, 194, 194), rgb(255, 255, 255), rgb(175, 175, 175));
+position: absolute;
+z-index: 2;
+margin-left: -15px;
+border-radius: 4px 0px 0px 4px;
+}
+
+@keyframes lefttomiddle {
+from{
+transform: translateX(-350px);
+}
+to{
+transform: translateX(0px);
+}
+}
+
+@keyframes righttomiddle {
+from{
+transform: translateX(350px);
+}
+to{
+transform: translateX(0px);
+}
+}
+
+.ticketdisplay:nth-child(3){
+animation-delay: 0.1s;
+}
+.ticketdisplay:nth-child(4){
+animation-delay: 0.2s;
+}
+.ticketdisplay:nth-child(5){
+animation-delay: 0.3s;
+}
+.ticketdisplay:nth-child(6){
+animation-delay: 0.4s;
+}
+.ticketdisplay:nth-child(7){
+animation-delay: 0.5s;
+}
+.ticketdisplay:nth-child(8){
+animation-delay: 0.6s;
+}
+.ticketdisplay:nth-child(9){
+animation-delay: 0.7s;
+}
+.ticketdisplay:nth-child(10){
+animation-delay: 0.8s;
+}
+
+.bluetickets .ticketdisplay:nth-child(3) .ticketnumber, .bluetickets .ticketdisplay:nth-child(3) .ticketnumbscrewpost{
+background-color: rgb(46, 46, 179);
+}
+
+.bluetickets .ticketdisplay:nth-child(4) .ticketnumber, .bluetickets .ticketdisplay:nth-child(4) .ticketnumbscrewpost{
+background-color: rgb(58, 58, 184);
+}
+
+.bluetickets .ticketdisplay:nth-child(5) .ticketnumber, .bluetickets .ticketdisplay:nth-child(5) .ticketnumbscrewpost{
+background-color: rgb(70, 70, 201);
+}
+
+.bluetickets .ticketdisplay:nth-child(6) .ticketnumber, .bluetickets .ticketdisplay:nth-child(6) .ticketnumbscrewpost{
+background-color: rgb(77, 77, 220);
+}
+
+.bluetickets .ticketdisplay:nth-child(7) .ticketnumber, .bluetickets .ticketdisplay:nth-child(7) .ticketnumbscrewpost{
+background-color: rgb(87, 87, 232);
+}
+
+.bluetickets .ticketdisplay:nth-child(8) .ticketnumber, .bluetickets .ticketdisplay:nth-child(8) .ticketnumbscrewpost{
+background-color: rgb(95, 95, 237);
+}
+
+.bluetickets .ticketdisplay:nth-child(9) .ticketnumber, .bluetickets .ticketdisplay:nth-child(9) .ticketnumbscrewpost{
+background-color: rgb(127, 127, 246);
+}
