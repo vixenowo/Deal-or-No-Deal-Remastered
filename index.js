@@ -7,10 +7,8 @@ let mainWindow;
 let coinCounter = 0.00;
 let idleMode = true;
 
-// Path to settings.json
 const settingsPath = path.join(__dirname, 'settings.json');
 
-// Load settings.json
 let settings = {};
 try {
   settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
@@ -28,7 +26,6 @@ const createWindow = () => {
     const displays = screen.getAllDisplays();
     const targetDisplay = displays[settings.monitor - 1] || displays[0];
   
-    // Calculate center position
     const screenWidth = targetDisplay.bounds.width;
     const screenHeight = targetDisplay.bounds.height;
     const windowWidth = 1280;
@@ -37,14 +34,13 @@ const createWindow = () => {
     const x = targetDisplay.bounds.x + (screenWidth - windowWidth) / 2;
     const y = targetDisplay.bounds.y + (screenHeight - windowHeight) / 2;
   
-    // Create the BrowserWindow
     mainWindow = new BrowserWindow({
-      x: Math.round(x), // Ensure integers for pixel alignment
+      x: Math.round(x), 
       y: Math.round(y),
       width: windowWidth,
       height: windowHeight,
       fullscreen: settings.fullscreen,
-      useContentSize: true, // Maintain internal resolution
+      useContentSize: true, 
       resizable: false,
       titleBarOverlay: {
         height: 60,
@@ -80,11 +76,12 @@ app.whenReady().then(() => {
     }
   });
 
+  /*
   electronLocalshortcut.register(mainWindow, 'Q', () => {
     mainWindow.loadFile('test/game.html');
   });
+  */
 
-  // Handle IPC for reducing coins
   ipcMain.on('reduce-coin', (event, amount) => {
     if (coinCounter >= amount) {
       coinCounter -= amount;

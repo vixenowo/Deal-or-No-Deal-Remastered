@@ -129,7 +129,48 @@ function idlemodeloop() {
     setTimeout(function () {
       if (idlemode_localvar) {
 
+        document.getElementById('ticketnumbervisual').innerText = selectedNumber;
+        document.getElementById('boxnumbervisual').innerText = RandomBoxNumber;
+
+        document.getElementById('boxreveal').style.display = "block";
+        document.getElementById('roomtable').style.display = "block";
+
+    const boxTicketPrice = document.getElementById('boxticketprice');
+    
+    const colors = {
+      1: 'rgb(43, 43, 169)',
+      2: 'rgb(46, 46, 179)',
+      3: 'rgb(58, 58, 184)',
+      4: 'rgb(70, 70, 201)',
+      5: 'rgb(77, 77, 220)',
+      6: 'rgb(87, 87, 232)',
+      7: 'rgb(95, 95, 237)',
+      8: 'rgb(127, 127, 246)',
+    };
+
+    boxTicketPrice.style.backgroundColor = colors[selectedNumber] || 'rgb(110, 13, 13)';
+        
+    document.getElementById('boxanimation').play();
+    document.getElementById('boxticketprice').style.display = "none";
+
+    setTimeout(function(){
+      document.getElementById('boxticketprice').style.display = "flex";
+    }, 1000);
+    
         playBoxNarratorAudio(RandomBoxNumber)
+
+        setTimeout(function () {
+          if (idlemode_localvar) {
+
+        if (selectedNumber <= 8){
+          document.getElementById('ticket_' + selectedNumber).classList.add('ticketleftout')
+        } 
+        if (selectedNumber >= 10) {
+          document.getElementById('ticket_' + selectedNumber).classList.add('ticketrightout')
+        }
+        
+          }
+        }, 500);
 
         setTimeout(function () {
           if (idlemode_localvar) {
@@ -152,6 +193,12 @@ function idlemodeloop() {
             document.getElementById('credits').classList.remove('creditsflashing');
             document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
             document.getElementById('demonstration').style.display = "none";
+            document.getElementById('ticket_' + selectedNumber).classList.remove('ticketrightout')
+            document.getElementById('ticket_' + selectedNumber).classList.remove('ticketleftout')
+            document.getElementById('boxreveal').style.display = "none";
+            document.getElementById('roomtable').style.display = "none";
+            document.getElementById('boxanimation').currentTime = 0;
+            document.getElementById('boxanimation').pause();
             idlemodeloop();
           }
         }, 4000);

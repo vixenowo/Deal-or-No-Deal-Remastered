@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../img/bg2.png');
     background-size: contain;
 }
 
@@ -181,6 +180,7 @@ width: 100%;
 height: 100%;
 position: absolute;
 display: flex;
+z-index: 500;
 }
 
 .bluetickets{
@@ -235,7 +235,7 @@ animation-delay: 1s;
 transform: translateX(-350px);
 }
 
-.redtickets .ticketdisplay{
+.redtixani{
 transform: translateX(350px);
 margin-left: 0px;
 border-radius: 10px 5px 5px 10px;
@@ -378,4 +378,160 @@ background-color: rgb(95, 95, 237);
 
 .bluetickets .ticketdisplay:nth-child(9) .ticketnumber, .bluetickets .ticketdisplay:nth-child(9) .ticketnumbscrewpost{
 background-color: rgb(127, 127, 246);
+}
+
+
+@keyframes ticketleftout {
+from{
+transform: translateX(0px);
+}
+to{
+transform: translateX(-350px);
+}
+}
+
+@keyframes ticketrightout {
+    from{
+    transform: translateX(0px);
+    }
+    to{
+    transform: translateX(350px);
+    }
+    }
+
+    .ticketleftout{
+        transform: translateX(0px);
+        animation: ticketleftout 1.5s forwards ease-out;
+        animation-delay: 0s;
+    }
+
+.ticketrightout{
+    transform: translateX(0px);
+    animation: ticketrightout 1.5s forwards ease-out;
+    animation-delay: 0s;
+}
+
+
+/* box reveal */
+
+.boxreveal{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 50;
+    background-image: url('test/bricks.jpg');
+    background-size: contain;
+    overflow: hidden;
+}
+
+.roomtable{
+    width: 1295px;
+    height: 200px;
+    position: absolute;
+    z-index: 51;
+    bottom: -35px;
+    margin-left: 12px; 
+}
+
+#roomtable{
+    display: none;
+}
+
+.videoholder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoholder video{
+    width: 400px;
+    height: 500px;
+    object-fit: contain;
+    margin-top: -110px;
+}
+
+.boxnumberopen{
+    background-color: white;
+    color: rgb(110, 13, 13);
+    position: absolute;
+    z-index: 50;
+    width: 170px;
+    height: 110px;
+    text-align: center;
+    font-size: 135px;
+    font-family: 'Eurostile Next LT Com';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 3px;
+    margin-bottom: -110px;
+}
+
+.boxnumberoutline{
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgb(110, 13, 13);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.boxnumberopen p{
+    margin: 0;
+    margin-bottom: -40px;
+}
+
+.boxticketprice{
+    background-color: rgb(190, 50, 50);
+    color: white;
+    position: absolute;
+    z-index: 50;
+    width: 210px;
+    height: 70px;
+    top: 155px;
+    text-align: center;
+    font-size: 55px;
+    font-family: 'Eurostile Next LT Com';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 3px;
+    margin-left: -3px;
+    box-shadow: 6px 7px 3px rgba(54, 54, 54, 0.828);
+}
+
+.boxticketoutline{
+    width: 100%;
+    height: 100%;
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.boxticketoutline p{
+    margin: 0;
+    margin-bottom: -18px;
+    animation: ticketbox 0.3s forwards ease-in-out;
+}
+
+@keyframes ticketbox{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
+#boxreveal{
+    display: none;
+}
+
+#boxticketprice{
+    display: none;
 }

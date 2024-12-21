@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../game.css">
 <link rel="stylesheet" href="../style.css">
-<div class="game" >
-    <div class="gameset">
+<div class="game">
+    <div class="boxset">
 
       <div class="ticketarea">
         <div class="bluetickets">
@@ -205,119 +205,39 @@
                   <p>200</p>
                 </div>
               </div>
-  
-  
-  
           </div>
         </div>
       </div>
-
-        <div class="board">
-          
-          <div class="lava-container">
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
+      <div class="boxreveal" id="boxreveal">
+        <div class="videoholder">
+          <div id="boxticketprice" class="boxticketprice">
+            <div class="boxticketoutline">
+              <p>200</p>
+            </div>
           </div>
-
-            <div class="table">
-                <div class="row offset">
-                  <div class="cell" id="box13">
-                    <div class="boxtop"></div>
-                    <div class="boxnumber"><p>13</p></div>
-                  </div>
-                  <div class="cell">
-                    <div class="cell" id="box14">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>14</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box15">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>15</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box16">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>16</p></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="cell">
-                    <div class="cell" id="box9">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>9</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box10">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>10</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box11">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>11</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box12">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>12</p></div>
-                    </div></div>
-                </div>
-                <div class="row offset">
-                  <div class="cell">
-                    <div class="cell" id="box5">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>5</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box6">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>6</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box7">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>7</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box8">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>8</p></div>
-                    </div></div>
-                </div>
-                <div class="row">
-                  <div class="cell">
-                    <div class="cell" id="box1">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>1</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box2">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>2</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box3">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>3</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box4">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>4</p></div>
-                    </div></div>
-                </div>
-              </div>
-
+          <div class="boxnumberopen">
+            <div class="boxnumberoutline">
+              <p>12</p>
+            </div>
+          </div>
+          <video id="boxanimation" muted playsinline>
+              <source src="../3d/box.webm" type="video/webm">
+              Your browser does not support the WebM format.
+          </video>
         </div>
+        <img src="../img/table.png" class="table">
+      </div>
     </div>
 </div>
 <script src="../WindowManager.js"></script>
+<script>
+  function openboxani(){
+    document.getElementById('boxanimation').play();
+    document.getElementById('boxticketprice').style.display = "none";
+
+    setTimeout(function(){
+      document.getElementById('boxticketprice').style.display = "flex";
+    }, 1000);
+  }
+  openboxani()
+</script>
