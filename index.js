@@ -53,6 +53,7 @@ const createWindow = () => {
     });
   
   mainWindow.loadFile('index.html');
+  //mainWindow.setMenuBarVisibility(false)
   // mainWindow.webContents.openDevTools();
 };
 
@@ -97,6 +98,10 @@ app.whenReady().then(() => {
   ipcMain.on('toggle-fullscreen', () => {
     const isFullScreen = mainWindow.isFullScreen();
     mainWindow.setFullScreen(!isFullScreen);
+  });
+
+  ipcMain.on('startgame', () => {
+    mainWindow.loadFile('gameplay.html');
   });
   
 });

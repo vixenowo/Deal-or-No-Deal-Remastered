@@ -12,7 +12,7 @@
 .boxset{
     width: 100%; 
     height: 100%;
-    background-image: url('../test/bricks.jpg');
+    background-image: url('../img/bricks.jpg');
     background-size: contain;
 }
 
@@ -88,7 +88,7 @@ font-family: 'Eurostile Next LT Com';
 }
 
 .boxnumber p{
-margin-top: 0px;
+margin-top: -4px;
 }
 
 .lava-container {

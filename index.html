@@ -9,6 +9,10 @@
   </head>
   <body>
     <div class="game">
+      <video id="trailer" muted class="trailervideo">
+        <source src="video/placeholder.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video> 
       <div class="idlemode" id="idlemode">
         <div class="grid-container idlelogos"></div>
 
@@ -236,7 +240,7 @@
               <p id="boxnumbervisual">12</p>
             </div>
           </div>
-          <video id="boxanimation" muted playsinline>
+          <video id="boxanimation" muted playsinline preload="auto">
               <source src="3d/box.webm" type="video/webm">
               Your browser does not support the WebM format.
           </video>
@@ -416,4 +420,8 @@
   <script src="main.js"></script>
   <script src="renderer.js"></script>
   <script src="WindowManager.js"></script>
+  <script>
+    window.electronAPI.playIdleAudio();
+</script>
+
 </html>

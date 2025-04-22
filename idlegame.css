@@ -419,7 +419,7 @@ transform: translateX(-350px);
     height: 100%;
     position: absolute;
     z-index: 50;
-    background-image: url('test/bricks.jpg');
+    background-image: url('img/bricks.jpg');
     background-size: contain;
     overflow: hidden;
 }

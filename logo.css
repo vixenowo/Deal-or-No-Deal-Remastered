@@ -30,16 +30,22 @@
 .logo div:nth-child(1) {
     flex: 1;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo div:nth-child(2) {
     margin-left: 12px;
     margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .qusbox p {
     position: absolute;
     margin: 0;
-    margin-bottom: -17px;
+    margin-bottom: -7px;
     font-size: 52px;
 }
