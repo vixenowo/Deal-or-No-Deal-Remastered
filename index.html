@@ -1,427 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Deal or No Deal Remastered</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="logo.css">
-    <link rel="stylesheet" href="idlegame.css">
-  </head>
-  <body>
-    <div class="game">
-      <video id="trailer" muted class="trailervideo">
-        <source src="video/placeholder.mp4" type="video/mp4">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Deal or No Deal Remastered</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="logo.css">
+  <link rel="stylesheet" href="idlegame.css">
+</head>
+
+<body>
+  <div class="game">
+    <video id="trailer" muted class="trailervideo">
+      <source src="video/placeholder.mp4" type="video/mp4">
       Your browser does not support the video tag.
-      </video> 
-      <div class="idlemode" id="idlemode">
-        <div class="grid-container idlelogos"></div>
+    </video>
+    <div class="idlemode" id="idlemode">
+      <div class="grid-container idlelogos"></div>
 
-        <div class="demonstration" id="demonstration">
-          <div class="gameset">
-            
-      <div class="ticketarea">
-        <div class="bluetickets">
-          <div class="ticketholder">
-            <h3>TICKETS</h3>
-            <div id="ticket_1" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
+      <div class="demonstration" id="demonstration">
+        <div class="gameset">
+
+          <div class="ticketarea">
+            <div class="bluetickets">
+              <div class="ticketholder">
+                <h3>TICKETS</h3>
+                <div id="ticket_1" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>1</p>
                   </div>
-                  <div class="screwticket"></div>
                 </div>
-                <p>1</p>
+
+                <div id="ticket_2" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>2</p>
+                  </div>
+                </div>
+
+                <div id="ticket_3" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>3</p>
+                  </div>
+                </div>
+
+                <div id="ticket_4" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>4</p>
+                  </div>
+                </div>
+
+                <div id="ticket_5" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>5</p>
+                  </div>
+                </div>
+
+                <div id="ticket_6" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>6</p>
+                  </div>
+                </div>
+
+                <div id="ticket_7" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>7</p>
+                  </div>
+                </div>
+
+                <div id="ticket_8" class="ticketdisplay ">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
+                    </div>
+                    <p>8</p>
+                  </div>
+                </div>
+
+
+
               </div>
             </div>
-
-            <div id="ticket_2" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>2</p>
-              </div>
-            </div>
-
-            <div id="ticket_3" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>3</p>
-              </div>
-            </div>
-
-            <div id="ticket_4" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>4</p>
-              </div>
-            </div>
-
-            <div id="ticket_5" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>5</p>
-              </div>
-            </div>
-
-            <div id="ticket_6" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>6</p>
-              </div>
-            </div>
-
-            <div id="ticket_7" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>7</p>
-              </div>
-            </div>
-
-            <div id="ticket_8" class="ticketdisplay ">
-              <div class="ticketnumber">
-                <div class="ticketnumbscrewpost">
-                  <div class="ticketpoleholder"></div>
-                  <div class="ticketpole">
-                  </div>
-                  <div class="screwticket"></div>
-                </div>
-                <p>8</p>
-              </div>
-            </div>
-
-
-
-          </div>
-        </div>
-        <div class="redtickets">
-          <div class="ticketholder">
-              <h3>TICKETS</h3>
-              <div id="ticket_10" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+            <div class="redtickets">
+              <div class="ticketholder">
+                <h3>TICKETS</h3>
+                <div id="ticket_10" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>10</p>
                   </div>
-                  <p>10</p>
                 </div>
-              </div>
-  
-              <div id="ticket_15" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_15" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>15</p>
                   </div>
-                  <p>15</p>
                 </div>
-              </div>
-  
-              <div id="ticket_20" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_20" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>20</p>
                   </div>
-                  <p>20</p>
                 </div>
-              </div>
-  
-              <div id="ticket_40" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_40" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>40</p>
                   </div>
-                  <p>40</p>
                 </div>
-              </div>
-  
-              <div id="ticket_50" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_50" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>50</p>
                   </div>
-                  <p>50</p>
                 </div>
-              </div>
-  
-              <div id="ticket_75" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_75" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>75</p>
                   </div>
-                  <p>75</p>
                 </div>
-              </div>
-  
-              <div id="ticket_100" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_100" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>100</p>
                   </div>
-                  <p>100</p>
                 </div>
-              </div>
-  
-              <div id="ticket_200" class="ticketdisplay redtixani">
-                <div class="ticketnumber">
-                  <div class="ticketnumbscrewpost">
-                    <div class="ticketpoleholder"></div>
-                    <div class="ticketpole">
+
+                <div id="ticket_200" class="ticketdisplay redtixani">
+                  <div class="ticketnumber">
+                    <div class="ticketnumbscrewpost">
+                      <div class="ticketpoleholder"></div>
+                      <div class="ticketpole">
+                      </div>
+                      <div class="screwticket"></div>
                     </div>
-                    <div class="screwticket"></div>
+                    <p>200</p>
                   </div>
-                  <p>200</p>
                 </div>
+
+
+
               </div>
-  
-  
-  
-          </div>
-        </div>
-      </div>
-      
-      <div class="boxreveal" id="boxreveal">
-        <div class="videoholder">
-          <div id="boxticketprice" class="boxticketprice">
-            <div class="boxticketoutline">
-              <p id="ticketnumbervisual">200</p>
             </div>
           </div>
-          <div class="boxnumberopen">
-            <div class="boxnumberoutline">
-              <p id="boxnumbervisual">12</p>
+
+          <div class="boxreveal" id="boxreveal">
+            <div class="videoholder">
+              <div id="boxticketprice" class="boxticketprice">
+                <div class="boxticketoutline">
+                  <p id="ticketnumbervisual">200</p>
+                </div>
+              </div>
+              <div class="boxnumberopen">
+                <div class="boxnumberoutline">
+                  <p id="boxnumbervisual">12</p>
+                </div>
+              </div>
+              <video id="boxanimation" muted playsinline preload="auto">
+                <source src="3d/box.webm" type="video/webm">
+                Your browser does not support the WebM format.
+              </video>
             </div>
           </div>
-          <video id="boxanimation" muted playsinline preload="auto">
-              <source src="3d/box.webm" type="video/webm">
-              Your browser does not support the WebM format.
-          </video>
-        </div>
-      </div>
-      <img src="img/table.png" class="roomtable" id="roomtable">
-      
-        <div class="board">
-          
-          <div class="lava-container">
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-            <div class="blob"></div>
-          </div>
+          <img src="img/table.png" class="roomtable" id="roomtable">
+
+          <div class="board">
+
+            <div class="lava-container">
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+              <div class="blob"></div>
+            </div>
 
             <div class="table">
-                <div class="row offset">
-                  <div class="cell" id="box13">
-                    <div class="boxtop"></div>
-                    <div class="boxnumber"><p>13</p></div>
+              <div class="row offset">
+                <div class="cell" id="box13">
+                  <div class="boxtop"></div>
+                  <div class="boxnumber">
+                    <p>13</p>
                   </div>
-                  <div class="cell">
-                    <div class="cell" id="box14">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>14</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box15">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>15</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box16">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>16</p></div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box14">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>14</p>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="cell">
-                    <div class="cell" id="box9">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>9</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box10">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>10</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box11">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>11</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box12">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>12</p></div>
-                    </div></div>
+                <div class="cell">
+                  <div class="cell" id="box15">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>15</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="row offset">
-                  <div class="cell">
-                    <div class="cell" id="box5">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>5</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box6">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>6</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box7">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>7</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box8">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>8</p></div>
-                    </div></div>
-                </div>
-                <div class="row">
-                  <div class="cell">
-                    <div class="cell" id="box1">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>1</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box2">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>2</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box3">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>3</p></div>
-                    </div></div>
-                  <div class="cell">
-                    <div class="cell" id="box4">
-                      <div class="boxtop"></div>
-                      <div class="boxnumber"><p>4</p></div>
-                    </div></div>
+                <div class="cell">
+                  <div class="cell" id="box16">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>16</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-        </div>
-
-
-    </div>
-        </div>
-      </div>
-
-      <div class="grid-container startani"></div>
-      <div class="idlecoin">
-        <div class="idleflex">
-          <div>
-            <div class="middle">
-              <div class="logo">
-                <div>
-                  DEAL OR NO DEAL
+              <div class="row">
+                <div class="cell">
+                  <div class="cell" id="box9">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>9</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div class="qusbox"><p>?</p></div>
+                <div class="cell">
+                  <div class="cell" id="box10">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>10</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-  
-            <div class="creditzone">
-              <div class="cred">
-                <h2 id="normalmode">INSERT <span class="redzone" id="normalremaining">£1.00</span> TO PLAY</h2>
-                <h3>WIN UP TO</h3>
-                <h3 class="redzone">200</h3>
-                <h3>TICKETS</h3>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="idleflex">
-          <div>
-            <div class="middle">
-              <div class="logo">
-                <div>
-                  DEAL OR NO DEAL
+                <div class="cell">
+                  <div class="cell" id="box11">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>11</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <div class="qusbox"><p>?</p></div>
+                <div class="cell">
+                  <div class="cell" id="box12">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>12</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="doubledeal">
-                DOUBLE DEAL
+              <div class="row offset">
+                <div class="cell">
+                  <div class="cell" id="box5">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>5</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box6">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>6</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box7">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>7</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box8">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>8</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-  
-            <div class="creditzone">
-              <div class="cred">
-                <h2 id="doublemode">INSERT <span class="redzone" id="doubleremaining">£2.00</span> TO PLAY</h2>
-                <h3>WIN UP TO</h3>
-                <h3 class="redzone">400</h3>
-                <h3>TICKETS</h3>
+              <div class="row">
+                <div class="cell">
+                  <div class="cell" id="box1">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>1</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box2">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>2</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box3">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>3</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cell">
+                  <div class="cell" id="box4">
+                    <div class="boxtop"></div>
+                    <div class="boxnumber">
+                      <p>4</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
+
+
         </div>
-        <h1 class="credits" id="credits">CREDITS: £0.00</h1>
       </div>
     </div>
-  </body>
-  <script src="main.js"></script>
-  <script src="renderer.js"></script>
-  <script src="WindowManager.js"></script>
-  <script>
-    window.electronAPI.playIdleAudio();
+
+    <div class="grid-container startani"></div>
+    <div class="idlecoin">
+      <div class="idleflex">
+        <div>
+          <div class="middle">
+            <div class="logo">
+              <div>
+                DEAL OR NO DEAL
+              </div>
+              <div>
+                <div class="qusbox">
+                  <p>?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="creditzone">
+            <div class="cred">
+              <h2 id="normalmode">INSERT <span class="redzone" id="normalremaining">£1.00</span> TO PLAY</h2>
+              <h3>WIN UP TO</h3>
+              <h3 class="redzone">200</h3>
+              <h3>TICKETS</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="idleflex">
+        <div>
+          <div class="middle">
+            <div class="logo">
+              <div>
+                DEAL OR NO DEAL
+              </div>
+              <div>
+                <div class="qusbox">
+                  <p>?</p>
+                </div>
+              </div>
+            </div>
+            <div class="doubledeal">
+              <h5>DOUBLE DEAL</h5>
+            </div>
+          </div>
+
+          <div class="creditzone">
+            <div class="cred">
+              <h2 id="doublemode">INSERT <span class="redzone" id="doubleremaining">£2.00</span> TO PLAY</h2>
+              <h3>WIN UP TO</h3>
+              <h3 class="redzone">400</h3>
+              <h3>TICKETS</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <h1 class="credits" id="credits">CREDITS: £0.00</h1>
+    </div>
+  </div>
+</body>
+<script src="main.js"></script>
+<script src="renderer.js"></script>
+<script src="WindowManager.js"></script>
+<script>
+  window.electronAPI.playIdleAudio();
 </script>
 
 </html>

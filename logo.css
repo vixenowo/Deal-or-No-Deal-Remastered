@@ -9,8 +9,8 @@
     padding: 7px 10px 1px 7px;
     display: flex;
     font-size: 60px;
-    width: 463px;
     font-weight: normal;
+    height: 60px;
 }
 
 .qusbox {
@@ -18,7 +18,7 @@
     background-color: white;
     color: var(--main);
     width: 66px;
-    height: 42px;
+    height: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -10px;
 }
 
 .logo div:nth-child(2) {

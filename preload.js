@@ -4,12 +4,14 @@ const audio = new Audio('./audio/coin_in.wav');
 audio.preload = 'auto';
 
 const IDLEaudio = new Audio('audio/mus_attract_2.wav');
+const thebanker = new Audio('audio/banker_01.wav');
+const videomusic = new Audio('audio/mus_attract_vid.wav');
 contextBridge.exposeInMainWorld('electronAPI', {
   playIdleAudio: () => {
-      const currentPage = window.location.pathname.split('/').pop();
-      if (currentPage === 'index.html') {
-          IDLEaudio.play();
-      }
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'index.html') {
+      IDLEaudio.play();
+    }
   }
 });
 
@@ -53,16 +55,33 @@ function playCrowdAudio(number) {
 }
 
 function playBoxNarratorAudio(number) {
-  const audio = new Audio(`audio/numbers/${String(number).padStart(2, '0')}.wav`); // Format the number as "01", "02", etc.
-  audio.play();
+  if (idlemode_localvar){
+    const audio = new Audio(`audio/numbers/${String(number).padStart(2, '0')}.wav`); // Format the number as "01", "02", etc.
+    audio.play();
+  }
 }
 
 ipcRenderer.on('coinsinserted', (event) => {
   idlemode_localvar = false;
   document.getElementById('idlemode').style.display = "none";
+  document.getElementById('credits').style.display = "block";
   document.getElementById('credits').classList.remove('creditsflashing')
   gameplayidleaudio.currentTime = 0
   gameplayidleaudio.pause();
+  
+  document.getElementById('trailer').style.display = "none";
+  document.getElementById('trailer').currentTime = 0;
+  document.getElementById('trailer').pause();
+  document.getElementById('idlemode').style.display = "none";
+document.getElementById('boxreveal').style.display = "none";
+  document.getElementById('roomtable').style.display = "none";
+  document.getElementById('boxanimation').currentTime = 0;
+  document.getElementById('boxanimation').pause();
+
+  document.getElementById('videomusic').currentTime = 0;
+  document.getElementById('videomusic').pause();
+
+  
 });
 
 function idlemodeloop() {
@@ -134,152 +153,174 @@ function idlemodeloop() {
     }, 15000);
 
     // 1/3 chance goes here
-      if (idlemode_localvar) {
+    if (idlemode_localvar) {
 
-        switch (idleModeNumber) {
-          case 1:
-            console.log("Idle Mode 1 activated");
+      switch (idleModeNumber) {
+        case 1:
+          console.log("Idle Mode 1 activated");
 
-    setTimeout(function () {
-      if (idlemode_localvar) {
-        IDLEaudio.currentTime = 0;
-        IDLEaudio.pause();
-        gameplayidleaudio.play();
-      }
-    }, 15000);
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              IDLEaudio.currentTime = 0;
+              IDLEaudio.pause();
+              gameplayidleaudio.play();
+            }
+          }, 15000);
 
-            
-    setTimeout(function () {
+
+          setTimeout(function () {
             document.getElementById('ticketnumbervisual').innerText = selectedNumber;
             document.getElementById('boxnumbervisual').innerText = RandomBoxNumber;
-    
+
             document.getElementById('boxreveal').style.display = "block";
             document.getElementById('roomtable').style.display = "block";
-    
-        const boxTicketPrice = document.getElementById('boxticketprice');
-        
-        const colors = {
-          1: 'rgb(43, 43, 169)',
-          2: 'rgb(46, 46, 179)',
-          3: 'rgb(58, 58, 184)',
-          4: 'rgb(70, 70, 201)',
-          5: 'rgb(77, 77, 220)',
-          6: 'rgb(87, 87, 232)',
-          7: 'rgb(95, 95, 237)',
-          8: 'rgb(127, 127, 246)',
-        };
-    
-        boxTicketPrice.style.backgroundColor = colors[selectedNumber] || 'rgb(110, 13, 13)';
-            
-        document.getElementById('boxanimation').play();
-        document.getElementById('boxticketprice').style.display = "none";
-    
-        setTimeout(function(){
-          document.getElementById('boxticketprice').style.display = "flex";
-        }, 1000);
-        
+
+            const boxTicketPrice = document.getElementById('boxticketprice');
+
+            const colors = {
+              1: 'rgb(43, 43, 169)',
+              2: 'rgb(46, 46, 179)',
+              3: 'rgb(58, 58, 184)',
+              4: 'rgb(70, 70, 201)',
+              5: 'rgb(77, 77, 220)',
+              6: 'rgb(87, 87, 232)',
+              7: 'rgb(95, 95, 237)',
+              8: 'rgb(127, 127, 246)',
+            };
+
+            boxTicketPrice.style.backgroundColor = colors[selectedNumber] || 'rgb(110, 13, 13)';
+
+            document.getElementById('boxanimation').play();
+            document.getElementById('boxticketprice').style.display = "none";
+
+            setTimeout(function () {
+              document.getElementById('boxticketprice').style.display = "flex";
+            }, 1000);
+
             playBoxNarratorAudio(RandomBoxNumber)
-    
+
             setTimeout(function () {
               if (idlemode_localvar) {
-    
-            if (selectedNumber <= 8){
-              document.getElementById('ticket_' + selectedNumber).classList.add('ticketleftout')
-            } 
-            if (selectedNumber >= 10) {
-              document.getElementById('ticket_' + selectedNumber).classList.add('ticketrightout')
-            }
-            
+
+                if (selectedNumber <= 8) {
+                  document.getElementById('ticket_' + selectedNumber).classList.add('ticketleftout')
+                }
+                if (selectedNumber >= 10) {
+                  document.getElementById('ticket_' + selectedNumber).classList.add('ticketrightout')
+                }
+
               }
             }, 500);
-    
+
             setTimeout(function () {
               if (idlemode_localvar) {
                 playCrowdAudio(selectedNumber);
               }
             }, 1100);
-    
+
             setTimeout(function () {
               if (idlemode_localvar) {
                 var moneyflip = new Audio('audio/money_flip.wav');
                 moneyflip.play();
               }
             }, 1500);
-    
-       // reset back to normal
-       setTimeout(function () {
-        if (idlemode_localvar) {
-          gameplayidleaudio.currentTime = 0;
-          gameplayidleaudio.pause();
-          document.getElementById('idlemode').style.display = "none";
-          document.getElementById('credits').classList.remove('creditsflashing');
-          document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
-          document.getElementById('demonstration').style.display = "none";
-          document.getElementById('ticket_' + selectedNumber).classList.remove('ticketrightout')
-          document.getElementById('ticket_' + selectedNumber).classList.remove('ticketleftout')
-          document.getElementById('boxreveal').style.display = "none";
-          document.getElementById('roomtable').style.display = "none";
-          document.getElementById('boxanimation').currentTime = 0;
-          document.getElementById('boxanimation').pause();
-          idlemodeloop();
-        }
-      }, 4000);
 
-    }, 20000);
-
-            break;
-          case 2:
-            console.log("Idle Mode 2 activated");
-            var videomusic = new Audio('audio/mus_attract_vid.wav');
-
+            // reset back to normal
             setTimeout(function () {
               if (idlemode_localvar) {
-                document.getElementById('trailer').play();
-                videomusic.play();
-              }
-            }, 15500);
-
-            setTimeout(function () {
-              if (idlemode_localvar) {
+                gameplayidleaudio.currentTime = 0;
+                gameplayidleaudio.pause();
+                document.getElementById('idlemode').style.display = "none";
+                document.getElementById('credits').classList.remove('creditsflashing');
+                document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
                 document.getElementById('demonstration').style.display = "none";
-                document.getElementById('trailer').style.display = "block";
+                document.getElementById('ticket_' + selectedNumber).classList.remove('ticketrightout')
+                document.getElementById('ticket_' + selectedNumber).classList.remove('ticketleftout')
+                document.getElementById('boxreveal').style.display = "none";
+                document.getElementById('roomtable').style.display = "none";
+                document.getElementById('boxanimation').currentTime = 0;
+                document.getElementById('boxanimation').pause();
+                idlemodeloop();
               }
+            }, 4000);
+
+          }, 20000);
+
+          break;
+        case 2:
+          console.log("Idle Mode 2 activated");
+
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              videomusic.play();
+            }
+          }, 15000);
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              document.getElementById('trailer').play();
+            }
+          }, 15500);
+
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              document.getElementById('demonstration').style.display = "none";
+              document.getElementById('trailer').style.display = "block";
+            }
 
             setTimeout(function () {
               if (idlemode_localvar) {
                 gameplayidleaudio.currentTime = 0;
-          gameplayidleaudio.pause();
-          document.getElementById('trailer').style.display = "none";
-          document.getElementById('trailer').currentTime = 0;
-          document.getElementById('trailer').pause();
-          document.getElementById('idlemode').style.display = "none";
-          document.getElementById('credits').classList.remove('creditsflashing');
-          document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
-          document.getElementById('demonstration').style.display = "none";
-          document.getElementById('ticket_' + selectedNumber).classList.remove('ticketrightout')
-          document.getElementById('ticket_' + selectedNumber).classList.remove('ticketleftout')
-          document.getElementById('boxreveal').style.display = "none";
-          document.getElementById('roomtable').style.display = "none";
-          document.getElementById('boxanimation').currentTime = 0;
-          document.getElementById('boxanimation').pause();
-          idlemodeloop();
+                gameplayidleaudio.pause();
+                document.getElementById('trailer').style.display = "none";
+                document.getElementById('trailer').currentTime = 0;
+                document.getElementById('trailer').pause();
+                document.getElementById('idlemode').style.display = "none";
+                document.getElementById('credits').classList.remove('creditsflashing');
+                document.getElementById('credits').textContent = `CREDITS: £${COINTOTAL.toFixed(2)}`;
+                document.getElementById('demonstration').style.display = "none";
+                document.getElementById('ticket_' + selectedNumber).classList.remove('ticketrightout')
+                document.getElementById('ticket_' + selectedNumber).classList.remove('ticketleftout')
+                document.getElementById('boxreveal').style.display = "none";
+                document.getElementById('roomtable').style.display = "none";
+                document.getElementById('boxanimation').currentTime = 0;
+                document.getElementById('boxanimation').pause();
+                idlemodeloop();
               }
             }, 24000);
 
-            }, 15000);
+          }, 15000);
 
 
-            break;
-          case 3:
-            console.log("Idle Mode 3 activated");
-            break;
-        }
+          break;
+        case 3:
+          console.log("Idle Mode 3 activated");
+          var phone = new Audio('audio/phone_ring.wav');
+          var offer = new Audio('audio/banker_offer.wav');
 
-        // Increment and reset the idleModeNumber
-        idleModeNumber = idleModeNumber < 3 ? idleModeNumber + 1 : 1;
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              phone.play();
+            }
+          }, 15000);
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              thebanker.play();
+            }
+          }, 15500);
+          setTimeout(function () {
+            if (idlemode_localvar) {
+              offer.play();
+            }
+          }, 20000);
 
-
+          break;
       }
+
+      // Increment and reset the idleModeNumber
+      idleModeNumber = idleModeNumber < 3 ? idleModeNumber + 1 : 1;
+
+
+    }
     // 1/3 chance goes here
   }
 }
@@ -348,7 +389,7 @@ ipcRenderer.on('startgame', (event) => {
 
     ipcRenderer.send('reduce-coin', 1.00);
 
-    setTimeout(function(){
+    setTimeout(function () {
       ipcRenderer.send('startgame');
     }, 5000);
 
@@ -356,8 +397,8 @@ ipcRenderer.on('startgame', (event) => {
     const cols = 20;
     const centerRow = Math.floor(rows / 2);
     const centerCol = Math.floor(cols / 2);
-    const tileWidth = (1280 / cols);
-    const tileHeight = (720 / rows);
+    const tileWidth = Math.floor(1280 / cols) + 5;
+    const tileHeight = Math.floor(720 / rows) + 5;    
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
@@ -374,7 +415,7 @@ ipcRenderer.on('startgame', (event) => {
           ${-col * tileWidth}px
           ${-row * tileHeight}px
         `;
-
+        
         tile.style.width = `${tileWidth}px`;
         tile.style.height = `${tileHeight}px`;
 

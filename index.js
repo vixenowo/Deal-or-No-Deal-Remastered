@@ -54,7 +54,23 @@ const createWindow = () => {
   
   mainWindow.loadFile('index.html');
   //mainWindow.setMenuBarVisibility(false)
-  // mainWindow.webContents.openDevTools();
+   // mainWindow.webContents.openDevTools();
+
+  
+  if (settings.fullscreen) {
+    mainWindow.setBounds(targetDisplay.bounds); 
+    mainWindow.setFullScreen(true);
+  }
+
+  mainWindow.once('ready-to-show', () => {
+    if (settings.fullscreen) {
+      mainWindow.setBounds(targetDisplay.bounds);
+      mainWindow.show(); 
+      mainWindow.setFullScreen(true); 
+    } else {
+      mainWindow.show();
+    }
+  });
 };
 
 app.whenReady().then(() => {
@@ -65,7 +81,7 @@ app.whenReady().then(() => {
     if (idleMode) {
       mainWindow.webContents.send('coinsinserted');
       coinCounter += 0.25;
-      console.log(`Coin counter: £${coinCounter.toFixed(2)}`);
+      console.log(`Coin counter: ${coinCounter.toFixed(2)}`);
       mainWindow.webContents.send('coin', coinCounter.toFixed(2), true);
     }
   });

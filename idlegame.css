@@ -80,7 +80,7 @@ font-family: 'Eurostile Next LT Com';
 }
 
 .boxnumber p{
-margin-top: 0px;
+margin-top: -3px;
 }
 
 .lava-container {
@@ -287,7 +287,7 @@ background-color: rgb(169, 49, 43);
 
 .ticketnumber p{
 margin: 0;
-padding-top: 8px;
+padding-top: 5px;
 text-shadow: 0px 0px 5px black;
 }
 
@@ -481,7 +481,7 @@ transform: translateX(-350px);
 
 .boxnumberopen p{
     margin: 0;
-    margin-bottom: -40px;
+    margin-bottom: -15px;
 }
 
 .boxticketprice{
@@ -515,7 +515,7 @@ transform: translateX(-350px);
 
 .boxticketoutline p{
     margin: 0;
-    margin-bottom: -18px;
+    margin-bottom: -5px;
     animation: ticketbox 0.3s forwards ease-in-out;
 }
 
